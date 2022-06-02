@@ -1,0 +1,142 @@
+<div class="container-fluid h-custom">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <img src="assets/images/fas.jpg" class="img-fluid" alt="Sample image">
+    </div>
+    <div class="col-md-5 mt-5 p-4 shadow-lg p-3 mb-5 bg-body rounded">
+      <!-- Pills navs -->
+      <ul class="nav nav-pills nav-justified mb-3 mt-3" id="ex1" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="tab-login" data-bs-toggle="pill" href="#pills-login" role="tab"
+          aria-controls="pills-login" aria-selected="true">Login</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="tab-register" data-bs-toggle="pill" href="#pills-register" role="tab"
+          aria-controls="pills-register" aria-selected="false">Register</a>
+        </li>
+      </ul>
+      <!-- Pills navs -->
+      <!-- Pills content -->
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+          <form [formGroup]="profileForm">
+
+            <!-- Email input -->
+            <label class="mt-3"><strong>Email address</strong></label>
+            <div class="input-group">
+              <i class="fa fa-envelope-o"></i>
+              <input type="email" class="form-control" id="email"placeholder="Enter email" formControlName="email" [ngClass]="{'is-invalid' : submitted && f['email'].errors}">
+            </div>
+            <div *ngIf="submitted && f['email'].errors">
+              <div *ngIf="f['email'].errors['required']">
+                <p class="text-danger">Email required !!!!!</p>
+              </div>
+            </div>
+
+            <!-- Password input -->
+            <label class="mt-3"><strong>Password</strong></label>
+            <div class="input-group">
+              <!-- <i class="bi bi-shield-lock-fill"></i> -->
+              <input matInput [type]="showPassword ? 'text' : 'password'" type="password" class="form-control" id="password"placeholder="Enter Password" formControlName="password" [ngClass]="{'is-invalid' : submitted && f['password'].errors}">
+              <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                {{showPassword?'visibility_off':'visibility'}}
+              </mat-icon>
+            </div>
+            <div *ngIf="submitted && f['password'].errors">
+              <div *ngIf="f['password'].errors['required']">
+                <p class="text-danger">Password required !!!!!</p>
+              </div>
+            </div>
+
+
+
+            <!-- 2 column grid layout -->
+            <div class="row mb-4 mt-4">
+              <div class="col-md-6 d-flex justify-content-center">
+                <!-- Checkbox -->
+                <div class="form-check mb-3 mb-md-0">
+                  <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                  <label class="form-check-label" for="loginCheck"> Remember me </label>
+                </div>
+              </div>
+
+              <div class="col-md-6 d-flex justify-content-center">
+                <!-- Simple link -->
+                <a href="#!">Forgot password?</a>
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4" (click)="login()">Sign in</button>
+
+          </form>
+        </div>
+        <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+          <form [formGroup]="registerForm">
+
+            <!-- Name input -->
+            <label class="mt-3"><strong>Name</strong></label>
+            <div class="input-group">
+              <i class="fa-solid fa-user fa"></i>
+              <input type="text" class="form-control" id="name"placeholder="Enter Name" formControlName="name" [ngClass]="{'is-invalid' : sub && g['name'].errors}"> <!-- [formControl]="name" -->
+            </div>
+            <div *ngIf="sub && g['name'].errors">
+              <div *ngIf="g['name'].errors['required']">
+                <p class="text-danger">Name required !!!!!</p>
+              </div>
+            </div>
+
+            <!-- Email input -->
+            <label class="mt-3"><strong>Email address</strong></label>
+            <div class="input-group">
+              <i class="fa fa-envelope-o"></i>
+              <input type="email" class="form-control" id="email"placeholder="Enter email" formControlName="email" [ngClass]="{'is-invalid' : sub && g['email'].errors}">
+            </div>
+            <div *ngIf="sub && g['email'].errors">
+              <div *ngIf="g['email'].errors['required']">
+                <p class="text-danger">Email required !!!!!</p>
+              </div>
+            </div>
+
+            <!-- Password input -->
+            <label class="mt-3"><strong>Password</strong></label>
+            <div class="input-group">
+              <!-- <i class="bi bi-shield-lock-fill"></i> -->
+              <input matInput [type]="showPassword ? 'text' : 'password'" type="password" class="form-control" id="password"placeholder="Enter Password" formControlName="password" [ngClass]="{'is-invalid' : sub && g['password'].errors}">
+              <!-- <input matInput [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"placeholder="Enter Password" [ngClass]="{'is-invalid' : submitted && f['password'].errors}" > -->
+              <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                {{showPassword?'visibility_off':'visibility'}}
+              </mat-icon>
+            </div>
+            <div *ngIf="sub && g['password'].errors">
+              <div *ngIf="g['password'].errors['required']">
+                <p class="text-danger">Password required !!!!!</p>
+              </div>
+            </div>
+
+            <!-- Repeat Password input -->
+            <!-- <div class="form-outline mb-4">
+              <input type="password" id="registerRepeatPassword" class="form-control" />
+              <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+            </div> -->
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mt-3" (click)="register()">Sign in</button>
+          </form>
+        </div>
+      </div>
+      <!-- Pills content -->
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 247, 255, 0.2);">
+      © 2022 Copyright
+    </div>
+    <!-- Copyright -->
+  </div>
+
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-spin-clockwise-fade-rotating" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
