@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <nav class="navbar mb-3 navbar-light bg-light sticky-md-top">
+    <div class="container-fluid">
+      <!-- <div>
+        <button class="btn btn-primary ms-5 mt-1 mb-1" [routerLink]="['/default/register']">Register</button>
+        <button class="btn btn-info ms-5 mt-1 mb-1" [routerLink]="['/default/table']">Table</button>
+        <button class="btn btn-info ms-5 mt-2" [routerLink]="['/default/templete']">Templete</button>
+      </div> -->
+
+      <div class="nav-item dropdown ms-5">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Service
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" [routerLink]="['/default/register']">Register</a></li>
+          <li><a class="dropdown-item"  [routerLink]="['/default/table']">Table</a></li>
+        </ul>
+      </div>
+
+      <!-- ms-5 mt-2 -->
+      <!-- [routerLink]="['/login']" -->
+      <button class="btn btn-danger float-end ms-5 mt-1 me-5 mb-1" (click)="logout()" >LogOut</button>
+
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+</div>
